@@ -643,16 +643,16 @@ function () {
       var _this10 = this;
 	    
       if (index) {
-	let panel this.panels[index];
-	var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
-	var activeHeight = panelInner.offsetHeight;
-	return panel.style.maxHeight = "".concat(activeHeight + 1, "px");
+        let panel = _this10.panels[index];
+        var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
+        var activeHeight = panelInner.offsetHeight;
+        return panel.style.height = "auto";
       } else {
         // [].forEach.(this.panels, (panel) => {
         this.panels.forEach(function (panel) {
-	  var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
-	  var activeHeight = panelInner.offsetHeight;
-	  return panel.style.maxHeight = "".concat(activeHeight + 1, "px");
+          var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
+          var activeHeight = panelInner.offsetHeight;
+            return panel.style.height = "auto";
         });      
       }
     }

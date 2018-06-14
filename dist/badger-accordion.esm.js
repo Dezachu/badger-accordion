@@ -451,6 +451,7 @@ function () {
   }, {
     key: "open",
     value: function open(headerIndex) {
+      this._setPanelHeight();
       this.togglePanel('open', headerIndex);
     }
     /**
@@ -475,6 +476,8 @@ function () {
     key: "openAll",
     value: function openAll() {
       var _this5 = this;
+	    
+      this._setPanelHeight();
 
       this.headers.forEach(function (header) {
         _this5.togglePanel('open', header);
@@ -636,15 +639,22 @@ function () {
 
   }, {
     key: "_setPanelHeight",
-    value: function _setPanelHeight() {
+    value: function _setPanelHeight(index = null) {
       var _this10 = this;
-
-      // [].forEach.(this.panels, (panel) => {
-      this.panels.forEach(function (panel) {
-        var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
-        var activeHeight = panelInner.offsetHeight;
-        return panel.style.maxHeight = "".concat(activeHeight, "px");
-      });
+	    
+      if (index) {
+	let panel this.panels[index];
+	var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
+	var activeHeight = panelInner.offsetHeight;
+	return panel.style.maxHeight = "".concat(activeHeight + 1, "px");
+      } else {
+        // [].forEach.(this.panels, (panel) => {
+        this.panels.forEach(function (panel) {
+	  var panelInner = panel.querySelector(_this10.settings.panelInnerClass);
+	  var activeHeight = panelInner.offsetHeight;
+	  return panel.style.maxHeight = "".concat(activeHeight + 1, "px");
+        });      
+      }
     }
     /**
      * SET UP HEADERS
